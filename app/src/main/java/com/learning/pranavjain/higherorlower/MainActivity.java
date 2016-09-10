@@ -82,22 +82,26 @@ public class MainActivity extends AppCompatActivity {
         TextView lower = (TextView) findViewById(R.id.textView4);
 
         //Get the Number
-        int inputNumber = Integer.parseInt(input.getText().toString());
+        if(input.getText().toString().isEmpty()){
+            Toast.makeText(getApplicationContext(),"Please enter a number",Toast.LENGTH_SHORT).show();
+        }else {
+            int inputNumber = Integer.parseInt(input.getText().toString());
 
-        //logic
-        if(inputNumber == randomNumber){
-            higher.setVisibility(View.INVISIBLE);
-            right.setVisibility(View.VISIBLE);
-            lower.setVisibility(View.INVISIBLE);
-            Toast.makeText(this,"You did it in "+count+" turns!",Toast.LENGTH_SHORT).show();
-        }else if(inputNumber <= randomNumber){
-            higher.setVisibility(View.VISIBLE);
-            right.setVisibility(View.INVISIBLE);
-            lower.setVisibility(View.INVISIBLE);
-        }else{
-            higher.setVisibility(View.INVISIBLE);
-            right.setVisibility(View.INVISIBLE);
-            lower.setVisibility(View.VISIBLE);
+            //logic
+            if (inputNumber == randomNumber) {
+                higher.setVisibility(View.INVISIBLE);
+                right.setVisibility(View.VISIBLE);
+                lower.setVisibility(View.INVISIBLE);
+                Toast.makeText(this, "You did it in " + count + " turns!", Toast.LENGTH_SHORT).show();
+            } else if (inputNumber <= randomNumber) {
+                higher.setVisibility(View.VISIBLE);
+                right.setVisibility(View.INVISIBLE);
+                lower.setVisibility(View.INVISIBLE);
+            } else {
+                higher.setVisibility(View.INVISIBLE);
+                right.setVisibility(View.INVISIBLE);
+                lower.setVisibility(View.VISIBLE);
+            }
         }
 
     }
